@@ -127,8 +127,7 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 * Wigner function plotted with:
 
   * **Red–blue colormap** (`RdBu_r`)
-  * **Colorbar**
-  * Light gray background + grid
+  * Light gray background
 
 ---
 

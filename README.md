@@ -8,6 +8,8 @@ The simulation visualizes the quantum superposition of a cat being *alive* and *
 * **Decoherence**
 * **Wave function collapse**
 
+![Simulation](schrodinger_cat.gif)
+
 ---
 
 ## 📖 Overview

@@ -171,4 +171,4 @@ The simulation touches on key interpretations:
 QuTiP: [https://qutip.org](https://qutip.org)
 * Schrödinger, E. (1935). *The Present Situation in Quantum Mechanics.*
 * Zeh, H. D. (1970). *On the Interpretation of Measurement in Quantum Theory.* *Foundations of Physics* 1, 69–76.
-* Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.*
+* Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.* <https://doi.org/10.48550/arXiv.quant-ph/0306072>

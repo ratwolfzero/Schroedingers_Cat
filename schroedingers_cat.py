@@ -28,16 +28,19 @@ cat = (psi1 + psi2).unit()
 initial_rho = cat * cat.dag()  # Store initial density matrix
 
 # --- Hamiltonians ---
-H_twist = kerr_strength * (a.dag() * a)**2  # Kerr Hamiltonian for phase 1 twisting
-H_static = Qobj(np.zeros((N, N)), dims=[[N], [N]])  # Zero Hamiltonian for static display
-H_decohere = Qobj(np.zeros((N, N)), dims=[[N], [N]])  # Zero Hamiltonian for phase 2
+# Kerr Hamiltonian for phase 1 twisting
+H_twist = kerr_strength * (a.dag() * a)**2
+# Zero Hamiltonian for static display
+H_static = Qobj(np.zeros((N, N)), dims=[[N], [N]])
+# Zero Hamiltonian for phase 2
+H_decohere = Qobj(np.zeros((N, N)), dims=[[N], [N]])
 
 # --- Collapse operators for decoherence ---
 c_ops_decoherence = [np.sqrt(gamma) * a]
 
 # --- Phase space grid ---
-x = np.linspace(-5, 5, 300)  # Increased resolution
-p = np.linspace(-5, 5, 300)  # Increased resolution
+x = np.linspace(-5, 5, 130)  # Increased resolution
+p = np.linspace(-5, 5, 130)  # Increased resolution
 
 # --- Precompute phase 1: static period + twisting ---
 frames_phase1 = np.where(tlist_total < t_decohere_start)[0]
@@ -46,11 +49,11 @@ if len(frames_phase1) > 0:
     # Split phase 1 into static and twisting periods
     t_static_frames = np.where(tlist_total[frames_phase1] <= t_static_end)[0]
     t_twist_frames = np.where(tlist_total[frames_phase1] > t_static_end)[0]
-    
+
     # Static period: no evolution
     for _ in t_static_frames:
         rho_rot.append(initial_rho)  # Append initial state for static period
-    
+
     # Twisting period: evolve from t=2 to t=10
     if len(t_twist_frames) > 0:
         t_twist = tlist_total[frames_phase1][t_twist_frames] - t_static_end
@@ -64,6 +67,7 @@ rho_prev = rho_rot[-1] if rho_rot else initial_rho
 
 # --- Prepare figure ---
 fig, ax = plt.subplots(figsize=(6, 6))
+
 
 def update(frame):
     global collapse_state, decoherence_started, rho_prev
@@ -93,7 +97,8 @@ def update(frame):
                 title = f"Coherent evolution → spiral fringes & blob distortion (t={t:.2f})"
         else:
             # Phase 2: decoherence
-            result = mesolve(H_decohere, rho_prev, [0, dt], c_ops=c_ops_decoherence)
+            result = mesolve(H_decohere, rho_prev, [
+                             0, dt], c_ops=c_ops_decoherence)
             rho_t = result.states[-1]
             rho_prev = rho_t
             title = f"Decoherence → interference fading (t={t:.2f})"
@@ -111,7 +116,7 @@ def update(frame):
     if t <= t_static_end and collapse_state is None:
         ax.text(2, 0, 'Alive', color='black', fontsize=10, ha='center')
         ax.text(-2, 0, 'Dead', color='black', fontsize=10, ha='center')
-    
+
     # Label collapsed state
     if collapse_state is not None:
         # Check which state the system collapsed to
@@ -120,19 +125,25 @@ def update(frame):
         elif np.allclose(collapse_state.full(), (psi2 * psi2.dag()).full(), atol=1e-6):
             ax.text(-2, 0, 'Dead', color='black', fontsize=10, ha='center')
 
+
 def on_key(event):
     global collapse_state
     if event.key == 'o' and collapse_state is None:
         collapse_state = random.choice([psi1*psi1.dag(), psi2*psi2.dag()])
         print("Box opened! Wavefunction collapsed.")
 
+
 # Connect key event
 fig.canvas.mpl_connect('key_press_event', on_key)
 
 # Run animation
-ani = FuncAnimation(fig, update, frames=timesteps, interval=150, repeat=True)
+interval = (t_total / timesteps) * 1000  # ms per frame
+ani = FuncAnimation(fig, update, frames=timesteps,
+                    interval=interval, repeat=True)
 
 # Save as GIF
-#ani.save("schrodinger_cat.gif", writer="pillow", fps=10)
+fps = timesteps / t_total   # frames per second
+ani.save("schrodinger_cat.gif", writer="pillow", fps=fps)
+
 
 plt.show()

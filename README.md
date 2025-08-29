@@ -170,4 +170,5 @@ The simulation touches on key interpretations:
 * N. Lambert, E. Giguère, P. Menczel, B. Li, P. Hopf, G. Suárez, M. Gali, J. Lishman, R. Gadhvi, R. Agarwal, A. Galicia, N. Shammah, P. Nation, J. R. Johansson, S. Ahmed, S. Cross, A. Pitchford, F. Nori, QuTiP 5: The Quantum Toolbox in Python, arXiv:2412.04705 (2024). <https://arxiv.org/abs/2412.04705>.
 QuTiP: [https://qutip.org](https://qutip.org)
 * Schrödinger, E. (1935). *The Present Situation in Quantum Mechanics.*
+* Zeh, H. D. (1970). *On the Interpretation of Measurement in Quantum Theory.* *Foundations of Physics* 1, 69–76.
 * Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.*

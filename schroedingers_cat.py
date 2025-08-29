@@ -142,8 +142,8 @@ ani = FuncAnimation(fig, update, frames=timesteps,
                     interval=interval, repeat=True)
 
 # Save as GIF
-fps = timesteps / t_total   # frames per second
-ani.save("schrodinger_cat.gif", writer="pillow", fps=fps)
+#fps = timesteps / t_total   # frames per second
+#ani.save("schrodinger_cat.gif", writer="pillow", fps=fps)
 
 
 plt.show()

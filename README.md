@@ -128,8 +128,8 @@ Pressing **“o”** collapses the wave function to:
 $$
 |\psi_\text{cat}\rangle \to
 \begin{cases}
-|\alpha\rangle & \text{“Alive”} \\[1mm]
-|-\alpha\rangle & \text{“Dead”}
+|\alpha\rangle & \text{"Alive"} \\
+|-\alpha\rangle & \text{"Dead"}
 \end{cases}
 $$
 
@@ -175,26 +175,34 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 
 ## ⚙️ Technical FAQ
 
-**Q: Why are the red blobs darker during decoherence?**
+**Q: Why are the red blobs darker during decoherence?**.
+
 A: Visualization effect; darker red emphasizes remaining amplitude after interference fades.
 
-**Q: Why do blobs shift slightly during decoherence?**
+**Q: Why do blobs shift slightly during decoherence?**.
+
 A: Amplitude damping with $\gamma = 0.05$ can slightly move coherent states toward the origin.
 
-**Q: Are the interference fringes correct?**
+**Q: Are the interference fringes correct?**.
+
 A: Yes; sparse fringes reflect the Wigner function for $\alpha = 2.0$.
 
-**Q: Is the time step accurate?**
+**Q: Is the time step accurate?**.
+
 A: 200 timesteps over 20 units ($dt \approx 0.1$) is sufficient; increase for higher precision.
 
-**Q: Is amplitude damping the only decoherence model?**
+**Q: Is amplitude damping the only decoherence model?**.
+
 A: In this simulation, yes. You can modify `c_ops_decoherence` for other models (e.g., dephasing).
 
-**Q: Is the Wigner function normalized?**
+**Q: Is the Wigner function normalized?**.
+
 A: Yes, QuTiP’s `wigner` ensures normalization; colormap scaling is for plotting.
 
-**Q: How does collapse work?**
+**Q: How does collapse work?**.
+
 A: Pressing 'o' randomly selects $|\alpha\rangle$ or $|-\alpha\rangle$, simulating measurement.
 
-**Q: Can accuracy be improved?**
+**Q: Can accuracy be improved?**.  
+
 A: Increase Hilbert space $N$ or grid resolution in $x,p$, at the cost of performance.

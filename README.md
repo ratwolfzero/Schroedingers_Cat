@@ -173,36 +173,36 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 
 ---
 
-## ⚙️ Technical FAQ
+## Schrödinger's Cat Simulation technical FAQ
 
-**Q: Why are the red blobs darker during decoherence?**.
+### Q: Why are the red blobs darker during decoherence?
 
-A: Visualization effect; darker red emphasizes remaining amplitude after interference fades.
+A: This is a visualization effect to highlight the transition, not a physical change. The darker red results from the color scaling (vmin and vmax based on the maximum absolute Wigner value), which emphasizes the remaining amplitude after interference fades.
 
-**Q: Why do blobs shift slightly during decoherence?**.
+### Q: Why do the blobs shift slightly during decoherence?
 
-A: Amplitude damping with $\gamma = 0.05$ can slightly move coherent states toward the origin.
+A: In the simulation, amplitude damping with gamma = 0.05 may cause a slight contraction or shift of the initial coherent states toward the origin due to energy loss, a physical decoherence effect. In reality, this effect might be much smaller, depending on the physical system's decoherence rate.
 
-**Q: Are the interference fringes correct?**.
+### Q: Are the interference fringes correct?
 
-A: Yes; sparse fringes reflect the Wigner function for $\alpha = 2.0$.
+A: Yes, the sparse fringes reflect the Wigner function’s quantum interference for alpha = 2.0. Adjust alpha or grid size (x, p) in the parameters to explore.
 
-**Q: Is the time step accurate?**.
+### Q: Is the time step (dt) accurate?
 
-A: 200 timesteps over 20 units ($dt \approx 0.1$) is sufficient; increase for higher precision.
+A: With 200 timesteps over 20 units, dt (~0.1) is sufficient. Increase timesteps for higher precision
 
-**Q: Is amplitude damping the only decoherence model?**.
+### Q: Is amplitude damping the only decoherence model?
 
-A: In this simulation, yes. You can modify `c_ops_decoherence` for other models (e.g., dephasing).
+A: Yes, using a operator with gamma = 0.05. Modify c_ops_decoherence to test other models (e.g., dephasing).
 
-**Q: Is the Wigner function normalized?**.
+### Q: Is the Wigner function properly normalized?
 
-A: Yes, QuTiP’s `wigner` ensures normalization; colormap scaling is for plotting.
+A: Yes, QuTiP’s wigner ensures normalization. The vmin and vmax in contourf capture the full range—see the plotting section.
 
-**Q: How does collapse work?**.
+### Q: How does collapse work?
 
-A: Pressing 'o' randomly selects $|\alpha\rangle$ or $|-\alpha\rangle$, simulating measurement.
+A: Pressing 'o' randomly selects a pure state (psi1 or psi2), simulating measurement per the Copenhagen interpretation.
 
-**Q: Can accuracy be improved?**.  
+### Q: Can I improve accuracy with higher N or grid resolution?
 
-A: Increase Hilbert space $N$ or grid resolution in $x,p$, at the cost of performance.
+A: Yes, increase N (currently 30) or x, p grid (currently 130) in the parameters, though it may slow performance.

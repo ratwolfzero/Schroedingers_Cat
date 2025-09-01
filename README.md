@@ -193,7 +193,7 @@ A: With 200 timesteps over 20 units, dt (~0.1) is sufficient. Increase timesteps
 
 ### Q: Is amplitude damping the only decoherence model?
 
-A: Yes, using a operator with gamma = 0.05. Modify c_ops_decoherence to test other models (e.g., dephasing).
+A: In this simulation, amplitude damping is the default decoherence model, implemented with a collapse operator (c_ops_decoherence) and a damping rate of gamma = 0.05. However, you can modify c_ops_decoherence in the code to include other decoherence models, such as dephasing, to explore different dynamics.
 
 ### Q: Is the Wigner function properly normalized?
 

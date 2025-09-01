@@ -20,19 +20,19 @@ Erwin Schrödinger’s 1935 thought experiment illustrates the paradoxical natur
 * If the atom decays (50% probability), the poison is released → the cat dies.
 * Until observed, quantum mechanics suggests the cat exists in a **superposition of alive and dead**.
 
-This simulation models a quantum analog of the cat state using a **coherent state superposition** in a harmonic oscillator, visualized through the **Wigner function in phase space**.
+This simulation models a **quantum analog of the cat state** using a **coherent state superposition** in a harmonic oscillator, visualized through the **Wigner function in phase space**.
 
 It demonstrates:
 
-* Coherent evolution under a Kerr Hamiltonian → twisting interference patterns.
-* Decoherence due to environmental interactions → fading quantum interference.
-* Interactive collapse via key press → mimicking measurement.
+* Coherent evolution under a Kerr Hamiltonian → twisting interference patterns
+* Decoherence due to environmental interactions → fading quantum interference
+* Interactive collapse via key press → mimicking measurement
 
 ---
 
 ## 🧮 Mathematical Background
 
-The simulation is based on a quantum harmonic oscillator with a Hilbert space dimension:
+The simulation is based on a quantum harmonic oscillator with Hilbert space dimension:
 
 $$
 N = 30
@@ -43,65 +43,95 @@ $$
 The Schrödinger cat state is a superposition of two coherent states:
 
 $$
-|\psi\rangle = \frac{1}{\sqrt{2}} \left( |\alpha\rangle + |-\alpha\rangle \right), \quad \alpha = 2.0
+|\psi_\text{cat}\rangle = \frac{1}{\sqrt{2 \,(1 + e^{-2|\alpha|^2})}} \Big( |\alpha\rangle + |-\alpha\rangle \Big), \quad \alpha = 2.0
 $$
 
 where $|\alpha\rangle$ and $|-\alpha\rangle$ are coherent states with amplitudes $\alpha$ and $-\alpha$.
 
-The density matrix is:
+The corresponding density matrix is:
 
 $$
-\rho_0 = |\psi\rangle\langle\psi|
+\rho_0 = |\psi_\text{cat}\rangle \langle \psi_\text{cat}|
 $$
-
-The **Wigner function** $W(x, p)$ represents the quantum state in phase space, computed over a grid $x, p \in [-5, 5]$.
-
-* Two Gaussian peaks → “alive” ($x \approx 2$) and “dead” ($x \approx -2$).
-* Interference fringes → signature of quantum superposition.
-
-![initiaö](initial_state.png)
 
 ---
 
-### Simulation Phases
+### Wigner Function
 
-#### 1. Coherent Evolution (t = 2 → 10)
+The **Wigner function** $W(x,p)$ represents the quantum state in phase space, computed over a grid:
+
+$$
+x, p \in [-5, 5]
+$$
+
+* Two Gaussian peaks → “Alive” ($x \approx 2$) and “Dead” ($x \approx -2$)
+* Interference fringes → signature of quantum superposition
+
+Decomposition of the Wigner function:
+
+$$
+W(x,p) = \frac{1}{\mathcal{N}^2} \Big[ W_\alpha(x,p) + W_{-\alpha}(x,p) + W_\text{interf}(x,p) \Big]
+$$
+
+where:
+
+* $W_\alpha(x,p)$ = Wigner function of $|\alpha\rangle$
+* $W_{-\alpha}(x,p)$ = Wigner function of $|-\alpha\rangle$
+* $W_\text{interf}(x,p)$ = interference term
+* $\mathcal{N}^2 = 2(1 + e^{-2|\alpha|^2})$
+
+![initial](initial_state.png)
+
+---
+
+## Simulation Phases
+
+### 1. Coherent Evolution (t = 2 → 10)
 
 The state evolves under a **Kerr Hamiltonian**:
 
 $$
-H_{\text{Kerr}} = \kappa (a^\dagger a)^2, \quad \kappa = 0.1
+H_\text{Kerr} = \kappa \, (a^\dagger a)^2, \quad \kappa = 0.1
 $$
 
-* Non-linear shearing causes interference fringes to **twist into spirals**.
-* Gaussian blobs **distort** in phase space.
+* Non-linear shearing causes interference fringes to **twist into spirals**
+* Gaussian blobs **distort** in phase space
 
 ![Coherent](coherent_evolution.png)
 
 ---
 
-#### 2. Decoherence (t = 10 → 20)
+### 2. Decoherence (t = 10 → 20)
 
 After resetting to $\rho_0$, decoherence is applied via **amplitude damping**:
 
 $$
-c = \sqrt{\gamma} a, \quad \gamma = 0.05
+c = \sqrt{\gamma} \, a, \quad \gamma = 0.05
 $$
 
-* No Hamiltonian applied ($H = 0$).
-* Interference fringes **fade away**, leaving stationary blobs.
-* System resembles a **classical mixture**.
+* No Hamiltonian applied ($H = 0$)
+* Interference fringes **fade away**, leaving stationary blobs
+* System resembles a **classical mixture**:
+
+$$
+\rho_\text{decoh} \approx \frac{1}{2} \Big( |\alpha\rangle \langle \alpha| + |-\alpha\rangle \langle -\alpha| \Big)
+$$
 
 ![Decoherence](decoherence.png)
 
 ---
 
-#### 3. Collapse
+### 3. Collapse (Interactive Measurement)
 
 Pressing **“o”** collapses the wave function to:
 
-* $|\alpha\rangle\langle\alpha|$ → alive ($x \approx 2$)
-* $|-\alpha\rangle\langle-\alpha|$ → dead ($x \approx -2$)
+$$
+|\psi_\text{cat}\rangle \to
+\begin{cases}
+|\alpha\rangle & \text{“Alive”} \\[1mm]
+|-\alpha\rangle & \text{“Dead”}
+\end{cases}
+$$
 
 The plot updates with a single labeled blob: **Alive** or **Dead**.
 
@@ -109,46 +139,16 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 
 ---
 
-### What the Simulation Shows
-
-* **t = 0 → 2 (Static Display):**
-  Two blobs (“Alive” at $x \approx 2$, “Dead” at $x \approx -2$) with straight fringes.
-* **t = 2 → 10 (Coherent Evolution):**
-  Kerr Hamiltonian twists fringes into spirals, blobs distort.
-* **t = 10 → 20 (Decoherence):**
-  Fringes fade, blobs remain stationary.
-
-### Interactive Collapse
-
-* Press **“o”** → collapse to one outcome (Alive or Dead).
-
-### Visualization
-
-* Wigner function plotted with:
-
-  * **Red–blue colormap** (`RdBu_r`)
-  * Light gray background
-
----
-
 ## 🔍 Interpreting the Results
 
-* **Static Phase (t=0 → 2):**
+* **t = 0 → 2 (Static Display):**
+  Two blobs (“Alive” at $x \approx 2$, “Dead” at $x \approx -2$) with straight interference fringes.
 
-$$
-W(x, p) \approx W_{\text{alive}}(x-2, p) + W_{\text{dead}}(x+2, p) + \text{interference terms}
-$$
+* **t = 2 → 10 (Coherent Evolution):**
+  Kerr Hamiltonian twists fringes into spirals, blobs distort.
 
-* **Coherent Evolution (t=2 → 10):**
-  Non-linear dynamics twist fringes + shear blobs → isolated quantum behavior.
-
-* **Decoherence (t=10 → 20):**
-
-$$
-\rho \approx \frac{1}{2} \left( |\alpha\rangle\langle\alpha| + |-\alpha\rangle\langle-\alpha| \right)
-$$
-
-Fringes disappear, leaving a **classical mixture**.
+* **t = 10 → 20 (Decoherence):**
+  Fringes fade, blobs remain stationary → classical mixture.
 
 * **Collapse (press “o”):**
   Single blob remains, labeled Alive or Dead.
@@ -157,54 +157,44 @@ Fringes disappear, leaving a **classical mixture**.
 
 ## 🌌 Quantum Interpretations
 
-The simulation touches on key interpretations:
-
-* **Copenhagen:** Collapse on measurement (“o” key).
-* **Decoherence:** Phase 2 → environment destroys interference.
-* **Other views:** Many-Worlds, Bohmian Mechanics, QBism also consistent, though not explicitly modeled.
+* **Copenhagen:** Collapse occurs on measurement (“o” key)
+* **Decoherence:** Environmental interaction destroys interference (phase 2)
+* **Other views:** Many-Worlds, Bohmian Mechanics, QBism also consistent but not explicitly modeled
 
 ---
 
 ## 📚 References
 
-* N. Lambert, E. Giguère, P. Menczel, B. Li, P. Hopf, G. Suárez, M. Gali, J. Lishman, R. Gadhvi, R. Agarwal, A. Galicia, N. Shammah, P. Nation, J. R. Johansson, S. Ahmed, S. Cross, A. Pitchford, F. Nori, QuTiP 5: The Quantum Toolbox in Python, arXiv:2412.04705 (2024). <https://arxiv.org/abs/2412.04705>.
-QuTiP: [https://qutip.org](https://qutip.org)
+* N. Lambert et al., *QuTiP 5: The Quantum Toolbox in Python*, arXiv:2412.04705 (2024). [https://arxiv.org/abs/2412.04705](https://arxiv.org/abs/2412.04705)
+* QuTiP: [https://qutip.org](https://qutip.org)
 * Schrödinger, E. (1935). *The Present Situation in Quantum Mechanics.*
 * Zeh, H. D. (1970). *On the Interpretation of Measurement in Quantum Theory.* *Foundations of Physics* 1, 69–76.
-* Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.* <https://doi.org/10.48550/arXiv.quant-ph/0306072>
+* Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.* [https://doi.org/10.48550/arXiv.quant-ph/0306072](https://doi.org/10.48550/arXiv.quant-ph/0306072)
 
 ---
 
-## Schrödinger's Cat Simulation technical FAQ
+## ⚙️ Technical FAQ
 
-### Q: Why are the red blobs darker during decoherence?
+**Q: Why are the red blobs darker during decoherence?**
+A: Visualization effect; darker red emphasizes remaining amplitude after interference fades.
 
-A: This is a visualization effect to highlight the transition, not a physical change. The darker red results from the color scaling (vmin and vmax based on the maximum absolute Wigner value), which emphasizes the remaining amplitude after interference fades.
+**Q: Why do blobs shift slightly during decoherence?**
+A: Amplitude damping with $\gamma = 0.05$ can slightly move coherent states toward the origin.
 
-### Q: Why do the blobs shift slightly during decoherence?
+**Q: Are the interference fringes correct?**
+A: Yes; sparse fringes reflect the Wigner function for $\alpha = 2.0$.
 
-A: In the simulation, amplitude damping with gamma = 0.05 may cause a slight contraction or shift of the initial coherent states toward the origin due to energy loss, a physical decoherence effect. In reality, this effect might be much smaller, depending on the physical system's decoherence rate.
+**Q: Is the time step accurate?**
+A: 200 timesteps over 20 units ($dt \approx 0.1$) is sufficient; increase for higher precision.
 
-### Q: Are the interference fringes correct?
+**Q: Is amplitude damping the only decoherence model?**
+A: In this simulation, yes. You can modify `c_ops_decoherence` for other models (e.g., dephasing).
 
-A: Yes, the sparse fringes reflect the Wigner function’s quantum interference for alpha = 2.0. Adjust alpha or grid size (x, p) in the parameters to explore.
+**Q: Is the Wigner function normalized?**
+A: Yes, QuTiP’s `wigner` ensures normalization; colormap scaling is for plotting.
 
-### Q: Is the time step (dt) accurate?
+**Q: How does collapse work?**
+A: Pressing 'o' randomly selects $|\alpha\rangle$ or $|-\alpha\rangle$, simulating measurement.
 
-A: With 200 timesteps over 20 units, dt (~0.1) is sufficient. Increase timesteps for higher precision
-
-### Q: Is amplitude damping the only decoherence model?
-
-A: Yes, using a operator with gamma = 0.05. Modify c_ops_decoherence to test other models (e.g., dephasing).
-
-### Q: Is the Wigner function properly normalized?
-
-A: Yes, QuTiP’s wigner ensures normalization. The vmin and vmax in contourf capture the full range—see the plotting section.
-
-### Q: How does collapse work?
-
-A: Pressing 'o' randomly selects a pure state (psi1 or psi2), simulating measurement per the Copenhagen interpretation.
-
-### Q: Can I improve accuracy with higher N or grid resolution?
-
-A: Yes, increase N (currently 30) or x, p grid (currently 130) in the parameters, though it may slow performance.
+**Q: Can accuracy be improved?**
+A: Increase Hilbert space $N$ or grid resolution in $x,p$, at the cost of performance.

@@ -170,6 +170,7 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 * Schrödinger, E. (1980). *The present situation in quantum mechanics*.
 (J. D. Trimmer, Trans.).  
 Proceedings of the American Philosophical Society, 124(5), 323–338. (Original work published 1935)
+* Wigner, E. P. (1932). On the quantum correction for thermodynamic equilibrium. Phys. Rev., 40, 749–759.
 * Zeh, H. D. (1970). *On the Interpretation of Measurement in Quantum Theory.* *Foundations of Physics* 1, 69–76.
 * Zurek, W. H. (2003). *Decoherence and the Transition from Quantum to Classical.* [https://doi.org/10.48550/arXiv.quant-ph/0306072](https://doi.org/10.48550/arXiv.quant-ph/0306072)
 * Becker R. (2025). Seeing Quantum Weirdness. Medium.  

@@ -161,6 +161,8 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 * **Decoherence:** Environmental interaction destroys interference (phase 2)
 * **Other views:** Many-Worlds, Bohmian Mechanics, QBism also consistent but not explicitly modeled
 
+---
+
 ## Quantum Mechanics Timeline
 
 The following timeline summarizes key milestones in quantum mechanics, highlighting contributions directly relevant to Schrödinger’s Cat (🐱) and tools used in modern simulations like the one described above (🛠️).

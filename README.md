@@ -165,7 +165,7 @@ The plot updates with a single labeled blob: **Alive** or **Dead**.
 
 ## 📚 References
 
-* N. Lambert et al., *QuTiP 5: The Quantum Toolbox in Python*, arXiv:2412.04705 (2024). [https://arxiv.org/abs/2412.04705](https://arxiv.org/abs/2412.04705)
+* N. Lambert et al., *QuTiP 5: The Quantum Toolbox in Python*, arXiv:2412.04705 (December 6, 2024). [https://arxiv.org/abs/2412.04705](https://arxiv.org/abs/2412.04705)
 * QuTiP: [https://qutip.org](https://qutip.org)
 * Schrödinger, E. (1980). *The present situation in quantum mechanics*.
 (J. D. Trimmer, Trans.).  

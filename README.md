@@ -173,16 +173,16 @@ The following timeline summarizes key milestones in quantum mechanics, highlight
 |           | 1905       | Einstein                | Photoelectric Effect (light as quanta)                            |
 |           | 1913       | Bohr                    | Atomic Model (quantized orbits)                                   |
 |           | 1925       | Heisenberg              | Matrix Mechanics (observables, not orbits)                        |
-| 🐱🛠️        | 1926       | Schrödinger             | Wave Mechanics (wavefunction dynamics)                            |
-| 🐱         | 1926       | Born                    | Probabilistic Interpretation (wavefunction → probability)         |
-| 🐱         | 1927       | Bohr/Heisenberg         | Copenhagen Interpretation (measurement & observer)                |
+| 🐱🛠️      | 1926       | Schrödinger             | Wave Mechanics (wavefunction dynamics)                            |
+| 🐱        | 1926       | Born                    | Probabilistic Interpretation (wavefunction → probability)         |
+| 🐱        | 1927       | Bohr/Heisenberg         | Copenhagen Interpretation (measurement & observer)                |
 |           | 1928       | Dirac                   | Uniting QM with special relativity (prediction of antimatter)     |
-| 🐱         | 1932       | von Neumann             | Mathematical Foundations (axioms, measurement theory)             |
-| 🐱🛠️        | 1932       | Wigner                  | Phase-space interpretation (Wigner function, quasi-probabilities) |
-| 🐱         | 1935       | Einstein-Podolsky-Rosen | EPR Paradox (QM works, but is it complete? — still debated)       |
-| 🐱         | 1935       | Schrödinger             | Schrödinger’s Cat (paradox of superposition)                      |
-| 🐱🛠️        | 1970       | Zeh                     | Decoherence Theory (quantum-classical transition)                 |
-| 🐱🛠️        | 1980s–2003 | Zurek                   | Decoherence and Quantum-Classical Transition (pointer states)     |
+| 🐱        | 1932       | von Neumann             | Mathematical Foundations (axioms, measurement theory)             |
+| 🐱🛠️      | 1932       | Wigner                  | Phase-space interpretation (Wigner function, quasi-probabilities) |
+| 🐱        | 1935       | Einstein-Podolsky-Rosen | EPR Paradox (QM works, but is it complete? — still debated)       |
+| 🐱        | 1935       | Schrödinger             | Schrödinger’s Cat (paradox of superposition)                      |
+| 🐱🛠️      | 1970       | Zeh                     | Decoherence Theory (quantum-classical transition)                 |
+| 🐱🛠️      | 1980s–2003 | Zurek                   | Decoherence and Quantum-Classical Transition (pointer states)     |
 
 **Legend**:  
 
